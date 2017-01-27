@@ -18,8 +18,10 @@ insert(Key, Pid) ->
 
 lookup(Key) ->
     case ets:lookup(?TABLE_ID, Key) of
-        [{Key, Pid}] -> {ok, Pid};
-        []           -> {error, not_found}
+        [{Key, Pid}] -> 
+            {ok, Pid};
+        []           ->
+            {error, not_found}
     end.
 
 delete(Pid) ->
